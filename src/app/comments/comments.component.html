@@ -1,0 +1,24 @@
+<div class="comments">
+  <div class="wrapper">
+    <div class="row">
+      <div class="column-desktop-1-2 comments__form">
+        <h2 class="comments__title">Please leave your comment</h2>
+        <input type="text" name="username" placeholder="Enter you name" class="m-t-20" required
+        [(ngModel)]="name">
+        <textarea name="comment" id="userComment" rows="10" class="m-t-20" required
+                  placeholder="Enter your message" [(ngModel)]="message"></textarea>
+        <button name="coomentbtn" class="m-t-20" (click)="sendComment()">Comment</button>
+      </div>
+      <div class="column-desktop-1-2 comments__list">
+        <div class="comments__nocomments" *ngIf="commentService.comments.length == 0">No comments yet</div>
+        <ul *ngIf="commentService.comments.length > 0">
+          <li *ngFor="let comment of commentService.comments" class="m-t-20">
+            <div class="comments__name">{{comment.name}}</div>
+            <div class="comments__date">{{comment.date | date: 'd/MM/yy, H:mm'}}</div>
+            <div class="comments__message m-t-20">{{comment.message}}</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
