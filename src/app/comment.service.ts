@@ -15,7 +15,7 @@ export class CommentService {
 
   comments: Comment[] = [];
 
-  addComment(comment: Comment){
+  addComment(comment: Comment) {
     this.comments.push(comment);
   }
 }

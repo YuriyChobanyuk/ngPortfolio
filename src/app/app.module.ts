@@ -7,13 +7,15 @@ import { BaseinfoComponent } from './baseinfo/baseinfo.component';
 import { CommentsComponent } from './comments/comments.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import {FormsModule} from '@angular/forms';
+import { FullInfoComponent } from './full-info/full-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BaseinfoComponent,
     CommentsComponent,
-    NavigationComponent
+    NavigationComponent,
+    FullInfoComponent
   ],
   imports: [
     BrowserModule,

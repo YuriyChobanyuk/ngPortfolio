@@ -1,8 +1,9 @@
-<nav class="navigation m-b-20">
+<nav class="navigation m-b-20" (click)="setActivePoint($event)">
   <div class="wrapper">
     <div class="row">
-      <a routerLink='baseinfo'>Home</a>
+      <a routerLink='baseinfo' class="active-link">Home</a>
       <a routerLink='comments'>Comments</a>
+      <a routerLink='fullinfo'>Info</a>
     </div>
   </div>
 </nav>
