@@ -1,29 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import {log} from 'util';
+import {Router} from '@angular/router';
+import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 @Component({
   selector: 'app-navigation',
+  providers: [Location, {provide: LocationStrategy, useClass: PathLocationStrategy}],
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.sass']
 })
 export class NavigationComponent implements OnInit {
+  location: Location;
 
-  constructor() { }
-
-  ngOnInit() {
-
+  constructor(public router: Router, location: Location) {
+    this.router = router;
+    this.location = location;
   }
 
-  setActivePoint(event) {
+  ngOnInit() {
     const navLinks = document.querySelectorAll('nav a');
-    if ([].includes.call(navLinks, event.target)) {
+    [].forEach.call(navLinks, item => {
+      if (this.location.isCurrentPathEqualTo('/' + item.getAttribute('routerLink'))) {
+        item.classList.add('active-link');
+    }
+    });
+    this.router.events.subscribe(() => {
       [].forEach.call(navLinks, item => {
-        item.classList.remove('active-link');
-        if (event.target === item) {
+        if (this.location.isCurrentPathEqualTo('/' + item.getAttribute('routerLink'))) {
           item.classList.add('active-link');
+        } else {
+          item.classList.remove('active-link');
         }
       });
-    }
+    });
   }
 
 }
