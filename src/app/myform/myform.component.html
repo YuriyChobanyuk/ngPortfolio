@@ -1,0 +1,31 @@
+<div class="wrapper">
+  <div class="row"></div>
+  <form [formGroup]="userData" class="user-form">
+    <label class=" m-b-20">
+      <span class="column-desktop-1-4">Name:</span>
+      <input class='column-desktop-1-2' type="text" formControlName="name" required="name is required">
+    </label>
+    <label class=" m-b-20">
+      <span class="column-desktop-1-4">Email:</span>
+      <input class='column-desktop-1-2' type="email" formControlName="email" required="email is required">
+    </label>
+    <label class=" m-b-20">
+      <span class="column-desktop-1-4">Age:</span>
+      <input class='column-desktop-1-2' type="text" formControlName="age" required="age is required">
+    </label>
+    <label class=" m-b-20">
+      <span class="column-desktop-1-4">Salary:</span>
+      <input class='column-desktop-1-2' type="text" formControlName="salary">
+    </label>
+  </form>
+  <p>
+    <button (click)="showData()">Show form data</button>
+  </p>
+  <p>
+    <button (click)="fullInData()">Fill info</button>
+  </p>
+  <p>
+    Form Status: {{ userData.status }}
+  </p>
+
+</div>

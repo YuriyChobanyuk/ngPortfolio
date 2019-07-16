@@ -14,7 +14,7 @@ export class CommentsComponent implements OnInit {
   message = '';
 
   sendComment() {
-    if (this.name.length < 2 || this.message.length == 0){
+    if (this.name.length < 2 || this.message.length === 0) {
       alert('Invalid input info');
       return false;
     }
@@ -22,7 +22,7 @@ export class CommentsComponent implements OnInit {
       name: this.name,
       message: this.message,
       date: new Date(Date.now())
-    }
+    };
     this.commentService.addComment(comment);
     this.name = this.message = '';
   }

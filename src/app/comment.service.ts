@@ -4,6 +4,8 @@ export interface Comment {
   name: string;
   message: string;
   date: any;
+  salary?: string;
+  age?: number;
 }
 
 @Injectable({
