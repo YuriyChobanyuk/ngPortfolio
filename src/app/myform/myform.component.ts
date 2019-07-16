@@ -14,6 +14,7 @@ export class MyformComponent implements OnInit {
       name: new FormControl('', [Validators.minLength(2)]),
       email: new FormControl('', [Validators.email]),
       age: new FormControl('', [Validators.min(18),
+        Validators.max(120),
         Validators.pattern('[0-9]+')]),
       salary: new FormControl('', [Validators.max(1000000),
         Validators.pattern('[0-9]+')])
@@ -39,9 +40,10 @@ export class MyformComponent implements OnInit {
   }
 
   numberInput(event) {
-    if (event.code.match(/Key\w/gi)) {
+    if (event.key.match(/[!@#$%^&*()]/gi)) {
       return false;
     }
+    return !!(event.code.match(/Digit/gi) || event.code.match(/Backspace/gi) || event.code.match(/Delete/gi));
   }
 
   get name() {
