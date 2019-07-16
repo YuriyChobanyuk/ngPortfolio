@@ -34,6 +34,19 @@ export class MyformComponent implements OnInit {
     });
   }
 
+  get name(){
+    return this.userData.get('name').valid;
+  }
+  get email(){
+    return this.userData.get('email').valid;
+  }
+  get age(){
+    return this.userData.get('age').valid;
+  }
+  get salary(){
+    return this.userData.get('salary').valid;
+  }
+
   constructor() { }
 
   ngOnInit() {

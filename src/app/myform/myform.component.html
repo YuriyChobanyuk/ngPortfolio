@@ -4,18 +4,28 @@
     <label class=" m-b-20">
       <span class="column-desktop-1-4">Name:</span>
       <input class='column-desktop-1-2' type="text" formControlName="name" required="name is required">
+      <span class="column-desktop-1-4 validation-tip unvalid" *ngIf="!name">
+        name is not valid
+      </span>
+      <span class="column-desktop-1-4 validation-tip valid" *ngIf="name">name is valid!</span>
     </label>
     <label class=" m-b-20">
       <span class="column-desktop-1-4">Email:</span>
       <input class='column-desktop-1-2' type="email" formControlName="email" required="email is required">
+      <span class="column-desktop-1-4 validation-tip unvalid" *ngIf="!email">email is not valid</span>
+      <span class="column-desktop-1-4 validation-tip valid" *ngIf="email">email is valid!</span>
     </label>
     <label class=" m-b-20">
       <span class="column-desktop-1-4">Age:</span>
       <input class='column-desktop-1-2' type="text" formControlName="age" required="age is required">
+      <span class="column-desktop-1-4 validation-tip unvalid" *ngIf="!age">age is not valid</span>
+      <span class="column-desktop-1-4 validation-tip valid" *ngIf="age">age is valid!</span>
     </label>
     <label class=" m-b-20">
       <span class="column-desktop-1-4">Salary:</span>
       <input class='column-desktop-1-2' type="text" formControlName="salary">
+      <span class="column-desktop-1-4 validation-tip unvalid" *ngIf="!salary">salary is not valid</span>
+      <span class="column-desktop-1-4 validation-tip valid" *ngIf="salary">salary is valid!</span>
     </label>
   </form>
   <p>

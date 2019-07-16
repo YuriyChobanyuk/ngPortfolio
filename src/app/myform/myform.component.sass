@@ -3,6 +3,8 @@
 .user-form
   display: flex
   flex-wrap: wrap
+  justify-content: space-between
+  align-items: baseline
 
   label
     flex-basis: 100%
@@ -13,3 +15,16 @@
       outline: none
       padding: 5px 10px
       border-bottom: 1px solid $main-color-darken
+
+  .validation-tip
+    padding: 10px
+    border-radius: 5px
+    color: white
+    text-align: center
+    margin-left: 30px
+
+  .valid
+    background-color: green
+
+  .unvalid
+    background-color: red
