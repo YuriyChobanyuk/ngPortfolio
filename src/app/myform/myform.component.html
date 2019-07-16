@@ -17,13 +17,15 @@
     </label>
     <label class=" m-b-20">
       <span class="column-desktop-1-4">Age:</span>
-      <input class='column-desktop-1-2' type="text" formControlName="age" required="age is required">
+      <input class='column-desktop-1-2' type="text" formControlName="age" required="age is required"
+             (keydown)="numberInput($event)">
       <span class="column-desktop-1-4 validation-tip unvalid" *ngIf="!age">age is not valid</span>
       <span class="column-desktop-1-4 validation-tip valid" *ngIf="age">age is valid!</span>
     </label>
     <label class=" m-b-20">
       <span class="column-desktop-1-4">Salary:</span>
-      <input class='column-desktop-1-2' type="text" formControlName="salary">
+      <input class='column-desktop-1-2' type="text" formControlName="salary" required="salary is required"
+      (keydown)="numberInput($event)">
       <span class="column-desktop-1-4 validation-tip unvalid" *ngIf="!salary">salary is not valid</span>
       <span class="column-desktop-1-4 validation-tip valid" *ngIf="salary">salary is valid!</span>
     </label>

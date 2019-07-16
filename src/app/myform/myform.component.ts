@@ -8,12 +8,16 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class MyformComponent implements OnInit {
 
-  userData = new FormGroup({
-    name: new FormControl('', [Validators.minLength(2)]),
-    email: new FormControl('', [Validators.email]),
-    age: new FormControl('', [Validators.min(18)]),
-    salary: new FormControl('', [Validators.max(1000000)])
-  });
+
+  userData: FormGroup = new FormGroup(
+    {
+      name: new FormControl('', [Validators.minLength(2)]),
+      email: new FormControl('', [Validators.email]),
+      age: new FormControl('', [Validators.min(18),
+        Validators.pattern('[0-9]+')]),
+      salary: new FormControl('', [Validators.max(1000000),
+        Validators.pattern('[0-9]+')])
+    });
 
   fullInData() {
     this.userData.patchValue({
@@ -34,16 +38,22 @@ export class MyformComponent implements OnInit {
     });
   }
 
-  get name(){
+  numberInput(event) {
+    if (event.code.match(/Key\w/gi)) {
+      return false;
+    }
+  }
+
+  get name() {
     return this.userData.get('name').valid;
   }
-  get email(){
+  get email() {
     return this.userData.get('email').valid;
   }
-  get age(){
+  get age() {
     return this.userData.get('age').valid;
   }
-  get salary(){
+  get salary() {
     return this.userData.get('salary').valid;
   }
 
