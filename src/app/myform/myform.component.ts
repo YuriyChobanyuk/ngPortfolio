@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, Validators, FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-myform',
@@ -8,35 +8,44 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class MyformComponent implements OnInit {
 
+  showFormData = false;
 
-  userData: FormGroup = new FormGroup(
-    {
-      name: new FormControl('', [Validators.minLength(2)]),
-      email: new FormControl('', [Validators.email]),
-      age: new FormControl('', [Validators.min(18),
-        Validators.max(120),
-        Validators.pattern('[0-9]+')]),
-      salary: new FormControl('', [Validators.max(1000000),
-        Validators.pattern('[0-9]+')])
-    });
+  userData = this.fb.group({
+    name: ['', Validators.minLength(2)],
+    email: ['', Validators.email],
+    age: ['', [Validators.pattern('[0-3][0-9][.][0-1][0-9][.][0-9]{4}'), MyformComponent.validateAge]],
+    salary: ['', [Validators.max(1000000), Validators.pattern('[0-9]+')]]
+  });
+
+  //
+
+  static validateAge(c: FormControl) {
+    const ageData = c.value.split('\.');
+    const birthDate = new Date(Date.now());
+    if (ageData.length === 3) {
+      birthDate.setFullYear(ageData[2], ageData[1], ageData[0]);
+    }
+    const dateNow = new Date(Date.now());
+    const resultDate = new Date(dateNow.valueOf() - birthDate.valueOf());
+    return (resultDate.getFullYear() - 1970 >= 18) ? null : {
+
+      validateAge: {
+        valid: false
+      }
+    };
+  }
 
   fullInData() {
     this.userData.patchValue({
       name: 'username',
       email: 'test@super.com',
-      age: '18',
+      age: '12.10.1997',
       salary: 999999
     });
   }
 
   showData() {
-    console.log(this.userData.value);
-    this.userData.patchValue({
-      name: '',
-      email: '',
-      age: '',
-      salary: ''
-    });
+    this.showFormData = true;
   }
 
   numberInput(event) {
@@ -47,21 +56,22 @@ export class MyformComponent implements OnInit {
   }
 
   get name() {
-    return this.userData.get('name').valid;
+    return this.userData.get('name');
   }
   get email() {
-    return this.userData.get('email').valid;
+    return this.userData.get('email');
   }
   get age() {
-    return this.userData.get('age').valid;
+    return this.userData.get('age');
   }
   get salary() {
-    return this.userData.get('salary').valid;
+    return this.userData.get('salary');
   }
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+
   }
 
 }

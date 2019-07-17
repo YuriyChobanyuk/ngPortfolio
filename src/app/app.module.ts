@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 import { FullInfoComponent } from './full-info/full-info.component';
 import { MyformComponent } from './myform/myform.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AgePipePipe } from './age-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommentsComponent,
     NavigationComponent,
     FullInfoComponent,
-    MyformComponent
+    MyformComponent,
+    AgePipePipe
   ],
   imports: [
     BrowserModule,
