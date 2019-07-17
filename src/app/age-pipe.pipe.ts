@@ -10,7 +10,6 @@ export class AgePipePipe implements PipeTransform {
       value.split('\.')[1],
       value.split('\.')[0]);
     const resDate = new Date(Date.now().valueOf() - valueDate.valueOf());
-    console.log(value);
     return resDate.getFullYear() - 1970;
   }
 

@@ -3,7 +3,8 @@
   <form [formGroup]="userData" class="user-form">
     <label class=" m-b-20">
       <span class="column-desktop-1-4">Name:</span>
-      <input class='column-desktop-1-2' type="text" formControlName="name" required="name is required">
+      <input class='column-desktop-1-2' type="text" formControlName="name" required="name is required"
+      placeholder="name, min 2 symbols">
       <span class="column-desktop-1-4 validation-tip unvalid" *ngIf="!name.valid">
         name is not valid
       </span>
@@ -11,7 +12,8 @@
     </label>
     <label class=" m-b-20">
       <span class="column-desktop-1-4">Email:</span>
-      <input class='column-desktop-1-2' type="email" formControlName="email" required="email is required">
+      <input class='column-desktop-1-2' type="email" formControlName="email" required="email is required"
+      placeholder="email">
       <span class="column-desktop-1-4 validation-tip unvalid" *ngIf="!email.valid">email is not valid</span>
       <span class="column-desktop-1-4 validation-tip valid" *ngIf="email.valid">email is valid!</span>
     </label>
@@ -25,15 +27,16 @@
     <label class=" m-b-20">
       <span class="column-desktop-1-4">Salary:</span>
       <input class='column-desktop-1-2' type="text" formControlName="salary" required="salary is required"
-      (keydown)="numberInput($event)">
+      (keydown)="numberInput($event)" (keydown)="detectMax($event, 1000000)" placeholder="digits only, max 100000 KGS">
       <span class="column-desktop-1-4 validation-tip unvalid" *ngIf="!salary.valid">salary is not valid</span>
       <span class="column-desktop-1-4 validation-tip valid" *ngIf="salary.valid">salary is valid!</span>
     </label>
   </form>
   <p>
-    <button (click)="showData()">Show form data</button>
+    <button (click)="showData()" *ngIf="userData.status === 'VALID'" class="m-b-20"
+            appMyHover [myHighlight]="'green'">Show form data</button>
   </p>
-  <div class="form-data" *ngIf="showFormData">
+  <div class="form-data m-b-20" *ngIf="showFormData && userData.status === 'VALID'">
     <ul>
       <li>{{name.value}}</li>
       <li>{{email.value}}</li>
@@ -42,7 +45,7 @@
     </ul>
   </div>
   <p>
-    <button (click)="fullInData()">Fill info</button>
+    <button (click)="fullInData()" appMyHover [myHighlight]="'purple'" class="m-b-20">Fill info</button>
   </p>
   <p>
     Form Status: {{ userData.status }}

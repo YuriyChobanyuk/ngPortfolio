@@ -11,6 +11,7 @@ import { FullInfoComponent } from './full-info/full-info.component';
 import { MyformComponent } from './myform/myform.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AgePipePipe } from './age-pipe.pipe';
+import { MyHoverDirective } from './my-hover.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AgePipePipe } from './age-pipe.pipe';
     NavigationComponent,
     FullInfoComponent,
     MyformComponent,
-    AgePipePipe
+    AgePipePipe,
+    MyHoverDirective
   ],
   imports: [
     BrowserModule,

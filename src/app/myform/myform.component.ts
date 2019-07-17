@@ -55,6 +55,12 @@ export class MyformComponent implements OnInit {
     return !!(event.code.match(/Digit/gi) || event.code.match(/Backspace/gi) || event.code.match(/Delete/gi));
   }
 
+  detectMax(event, maxValue) {
+    if ((+event.target.value + event.key.match(/[0-9]/)) > maxValue) {
+      return false;
+    }
+  }
+
   get name() {
     return this.userData.get('name');
   }
