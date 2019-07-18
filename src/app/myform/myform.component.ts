@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators, FormBuilder} from '@angular/forms';
+import {log} from 'util';
 
 @Component({
   selector: 'app-myform',
@@ -9,6 +10,7 @@ import {FormControl, Validators, FormBuilder} from '@angular/forms';
 export class MyformComponent implements OnInit {
 
   showFormData = false;
+  currencyValue = 'KGS';
 
   userData = this.fb.group({
     name: ['', Validators.minLength(2)],
@@ -73,6 +75,15 @@ export class MyformComponent implements OnInit {
   get salary() {
     return this.userData.get('salary');
   }
+
+  getCurrencyValue() {
+    return this.currencyValue;
+  }
+
+  setCurrencyValue(value) {
+    this.currencyValue = value;
+  }
+
 
   constructor(private fb: FormBuilder) { }
 

@@ -41,7 +41,14 @@
       <li>{{name.value}}</li>
       <li>{{email.value}}</li>
       <li>{{age.value | agePipe}}</li>
-      <li>{{salary.value | currency:'KGS'}}</li>
+      <li>{{salary.value | currency:getCurrencyValue()}}
+        <span>
+        <select name="currencySelect" id="currencySelect" (change)="setCurrencyValue($event.target.value)"
+        [value]="'KGS'">
+          <option value="USD">USD</option>
+          <option value="KGS">KGS</option>
+        </select>
+      </span></li>
     </ul>
   </div>
   <p>
