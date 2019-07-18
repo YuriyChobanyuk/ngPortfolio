@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <div class="row">
+    <form action="" class="login-form" (ngSubmit)="submitForm($event)" [formGroup]="loginFrom">
+      <input type="text" class="login-form__username m-b-20" placeholder="name" formControlName="username">
+      <input type="password" class="login-form__password m-b-20" placeholder="password" formControlName="password">
+      <button>Submit</button>
+    </form>
+  </div>
+</div>
+<div class="wrapper m-t-20">
+  <div class="row flex-wrap">
+    <button (click)="getTeachers()">get teachers</button>
+    <ul *ngIf="teachers" class="width-100">
+      <li *ngFor="let teacher of teachers">{{teacher.firstname}}</li>
+    </ul>
+  </div>
+</div>

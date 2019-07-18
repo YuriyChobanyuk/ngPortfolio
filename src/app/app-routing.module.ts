@@ -4,6 +4,7 @@ import {BaseinfoComponent} from './baseinfo/baseinfo.component';
 import {CommentsComponent} from './comments/comments.component';
 import {FullInfoComponent} from './full-info/full-info.component';
 import {MyformComponent} from './myform/myform.component';
+import {LoginComponent} from './login/login.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path: 'form',
     component: MyformComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 

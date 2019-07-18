@@ -12,6 +12,13 @@ import { MyformComponent } from './myform/myform.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AgePipePipe } from './age-pipe.pipe';
 import { MyHoverDirective } from './my-hover.directive';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { LoginComponent } from './login/login.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatFormFieldModule, MatInputModule} from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import {httpInterceptorProviders} from './http-interceptors';
 
 @NgModule({
   declarations: [
@@ -22,15 +29,27 @@ import { MyHoverDirective } from './my-hover.directive';
     FullInfoComponent,
     MyformComponent,
     AgePipePipe,
-    MyHoverDirective
+    MyHoverDirective,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
